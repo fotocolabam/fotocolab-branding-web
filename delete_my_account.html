@@ -116,8 +116,8 @@
             messageBox.className = "message";
 
             try {
-                const response = await fetch("https://api.fotocolab.com/delete", {
-                    method: "POST",
+                const response = await fetch("https://choices-sql-naples-background.trycloudflare.com/api/v1/fotocolab/user/delete", {
+                    method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -125,7 +125,7 @@
                 });
 
                 if (response.ok) {
-                    messageBox.textContent = "Your deletion request has been submitted successfully.";
+                    messageBox.textContent = "If an account exists with the provided email, it will be removed.";
                     messageBox.classList.add("success");
                     document.getElementById("deleteForm").reset();
                 } else {
