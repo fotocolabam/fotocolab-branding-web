@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Account Deletion</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .checkbox {
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #00b079;
+            border: none;
+            color: white;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c9302c;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Delete Your Account</h2>
+        <p>Enter your registered email address to request permanent account deletion.</p>
+
+        <form id="deleteForm">
+            <input type="email" id="email" placeholder="Enter your email address" required />
+
+            <div class="checkbox">
+                <input type="checkbox" id="confirm" required />
+                <label for="confirm">
+                    I understand that this action is permanent and cannot be undone.
+                </label>
+            </div>
+
+            <button type="submit">Request Deletion</button>
+        </form>
+
+        <div id="responseMessage" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById("deleteForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const messageBox = document.getElementById("responseMessage");
+
+            messageBox.textContent = "";
+            messageBox.className = "message";
+
+            try {
+                const response = await fetch("https://api.fotocolab.com/api/v1/fotocolab/user/delete", {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    messageBox.textContent = "If an account exists with the provided email, it will be removed.";
+                    messageBox.classList.add("success");
+                    document.getElementById("deleteForm").reset();
+                } else {
+                    messageBox.textContent = "Something went wrong. Please try again.";
+                    messageBox.classList.add("error");
+                }
+
+            } catch (error) {
+                messageBox.textContent = "Network error. Please try again later.";
+                messageBox.classList.add("error");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
