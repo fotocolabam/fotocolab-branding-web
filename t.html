@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Brand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Basic reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6b73ff, #000dff);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll section */
+    .section {
+      min-height: 100vh;
+      padding: 5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .section:nth-child(even) { background: #f0f0f0; }
+    .section:nth-child(odd) { background: #ffffff; }
+
+    .section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .section p { font-size: 1.2rem; max-width: 600px; margin: auto; }
+
+    /* Button */
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      background: #ff5c5c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-btn:hover { transform: scale(1.05); }
+
+    /* Interactive floating elements */
+    .floating {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Your Brand Name</h1>
+    <p>Immersive storytelling, AI-powered visuals, and interactive experience</p>
+    <button class="cta-btn">Explore</button>
+
+    <!-- Floating shapes -->
+    <div class="floating" style="top:20%; left:10%; width:60px; height:60px;"></div>
+    <div class="floating" style="top:70%; left:80%; width:40px; height:40px;"></div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section">
+    <div>
+      <h2>About Our Brand</h2>
+      <p>
+        Use AI-generated visuals and copy here. Keep your branding consistent and immersive.
+        You can replace this text with ChatGPT or Copy.ai generated content.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section">
+    <div>
+      <h2>Our Services</h2>
+      <p>
+        Highlight your offerings. Embed AI-generated graphics (from Canva or Stable Diffusion) here.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div>
+      <h2>Contact Us</h2>
+      <p>Email us at: info@yourbrand.com</p>
+      <button class="cta-btn">Get in Touch</button>
+    </div>
+  </section>
+
+</body>
+</html>

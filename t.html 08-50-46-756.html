@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>fotocolab — Status Made Effortless</title>
+
+  <meta name="description"
+    content="Download, edit and share status-ready images instantly with fotocolab. No friction. Just post.">
+  <meta name="keywords" content="status images, whatsapp status, good morning, festival images, fotocolab">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #12121a;
+      --accent: #00b079;
+      --text: #ffffff;
+      --muted: #9ca3af;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1a1a2e, #0b0b0f);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue';
+      font-size: 28px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-block;
+      width: auto;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 80px 40px;
+      align-items: center;
+    }
+
+
+    .hero h1 {
+      font-family: 'Bebas Neue';
+      font-size: clamp(48px, 8vw, 90px);
+      line-height: 0.95;
+    }
+
+    .hero em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      color: var(--muted);
+      max-width: 400px;
+    }
+
+    /* FEED VISUAL */
+    .feed {
+      position: relative;
+      width: 320px;
+      height: 520px;
+      margin: auto;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .c1 {
+      transform: rotate(-8deg) translateY(20px);
+    }
+
+    .c2 {
+      transform: rotate(5deg) translateY(10px);
+    }
+
+    .c3 {
+      z-index: 3;
+    }
+
+    .feed-inner {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* profile */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4822, #ff7a59);
+    }
+
+    .post {
+      flex: 1;
+      margin: 12px 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff4822, #ff7a59);
+    }
+
+    /* actions */
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    /* glow */
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 72, 34, 0.4), transparent);
+      filter: blur(80px);
+      top: -50px;
+      right: -50px;
+    }
+
+    /* FEATURES */
+    .section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue';
+      font-size: 60px;
+    }
+
+    .grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .box {
+      padding: 30px;
+      border-radius: 16px;
+      background: var(--card);
+      transition: 0.3s;
+    }
+
+    .box:hover {
+      transform: translateY(-6px);
+      border: 1px solid var(--accent);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta h2 {
+      font-family: 'Bebas Neue';
+      font-size: 70px;
+    }
+
+    .post {
+      flex: 1;
+      margin: 12px 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ff4822, #ff7a59);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .post-icon {
+      font-size: 40px;
+      opacity: 0.9;
+    }
+
+    /* POST container */
+    .post {
+      flex: 1;
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* GRID */
+    .grid-box {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* each small box */
+    .grid-box div {
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff4822, #ff7a59);
+      opacity: 0.9;
+      transition: 0.3s;
+    }
+
+    /* subtle variation */
+    .grid-box div:nth-child(2) {
+      background: linear-gradient(135deg, #6C5CE7, #00C9A7);
+    }
+
+    .grid-box div:nth-child(3) {
+      background: linear-gradient(135deg, #3B82F6, #06B6D4);
+    }
+
+    .grid-box div:nth-child(4) {
+      background: linear-gradient(135deg, #F59E0B, #F97316);
+    }
+
+    /* hover effect (optional but nice) */
+    .grid-box div:hover {
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      display: block;
+      margin: 6px;
+      text-decoration: none;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">FOTOCOLAB</div>
+    <a href="https://play.google.com/store/apps/details?id=com.fotocolab.com" class="btn primary">Download</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>STATUS<br><em>READY.</em></h1>
+      <p>
+        Discover, download, edit and share feed-based content instantly.
+        fotocolab removes friction from posting your daily status.
+      </p>
+      <p></p>
+      <a href="https://play.google.com/store/apps/details?id=com.fotocolab.com" class="btn primary">Get App</a>
+    </div>
+
+    <div class="feed">
+      <div class="glow"></div>
+
+      <div class="card c1"></div>
+      <div class="card c2"></div>
+
+      <div class="card c3">
+        <div class="feed-inner">
+          <div class="profile">
+            <div class="avatar"></div>
+            <span>Good Morning</span>
+          </div>
+          <div class="post">
+            <div class="grid-box">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="actions">
+            <span>⬇ Download</span>
+            <span>✏ Edit</span>
+            <span>📤 Share</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>WHY FOTOCOLAB</h2>
+    <div class="grid">
+      <div class="box">Feed-based content discovery</div>
+      <div class="box">Download & share instantly</div>
+      <div class="box">Quick edit before posting</div>
+      <div class="box">Categories like festivals & daily wishes</div>
+      <div class="box">User profiles with posts</div>
+      <div class="box">Premium: HD + ad-free</div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>POST WITHOUT THINKING</h2>
+    <a href="https://play.google.com/store/apps/details?id=com.fotocolab.com" class="btn primary">Download Now</a>
+  </section>
+
+  <footer>
+    <p>© 2026 fotocolab</p>
+    <a href="https://fotocolab.com/contact">Contact</a>
+    <a href="https://fotocolab.com/privacy">Privacy</a>
+    <a href="https://fotocolab.com/terms">Terms</a>
+    <a href="https://fotocolab.com/refund_and_cancellation">Refund</a>
+    <a href="https://fotocolab.com/delete_my_account">Delete Account</a>
+  </footer>
+
+</body>
+
+</html>
